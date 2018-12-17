@@ -10,13 +10,13 @@ before_script:
   - docker pull $CONTAINER_IMAGE || true
 
 script:
-  - docker build --cache-from $CONTAINER_IMAGE:latest --tag $USERNAME/$CONTAINER_IMAGE:$TRAVIS_COMMIT --tag $CONTAINER_IMAGE:latest .
+  - docker build --cache-from $CONTAINER_IMAGE:latest --tag $USERNAME/$CONTAINER_IMAGE:$TRAVIS_COMMIT --tag $USERNAME/$CONTAINER_IMAGE:latest .
 
 after_script:
   - docker images
 
 before_deploy:
-  - docker login -u $USERNAME -p $PASSWORD
+  - echo $PASSWORD | docker login -u $USERNAME --password-stdin
 
 deploy:
   provider: script
