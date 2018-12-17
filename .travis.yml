@@ -3,7 +3,7 @@ services:
   - docker
 
 script:
-  - docker build -t edineipiovesan/sgs-ci-build-image:$TRAVIS_COMMIT .
+  - docker build -t edineipiovesan/sgs-ci-build-image .
 
 before_deploy:
   - docker login -u $USERNAME -p $PASSWORD
