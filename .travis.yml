@@ -23,3 +23,6 @@ deploy:
   script: docker push $USERNAME/$CONTAINER_IMAGE:$TRAVIS_COMMIT && docker push $USERNAME/$CONTAINER_IMAGE:latest
   on:
     branch: master
+
+after_deploy:
+  - curl --header "Content-Type: application/json" --request POST --data '{}' https://hooks.microbadger.com/images/edineipiovesan/sgs-ci-build-image/yTsz_jn54cL8ZyJZrhrwqMFNDZY=
