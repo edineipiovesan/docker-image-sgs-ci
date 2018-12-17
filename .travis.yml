@@ -1,0 +1,15 @@
+sudo: required
+services:
+  - docker
+
+script:
+  - docker build -t edineipiovesan/sgs-ci-build-image:$TRAVIS_COMMIT .
+
+before_deploy:
+  - docker login -u $USERNAME -p $PASSWORD
+
+deploy:
+  provider: script
+  script: docker push edineipiovesan/sgs-ci-build-image:$TRAVIS_COMMIT
+  on:
+    branch: master
