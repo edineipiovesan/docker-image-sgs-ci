@@ -20,8 +20,6 @@ before_deploy:
 
 deploy:
   provider: script
-  script: 
-    - docker push $USERNAME/$CONTAINER_IMAGE:$TRAVIS_COMMIT
-    - docker push $USERNAME/$CONTAINER_IMAGE:latest
+  script: docker push $USERNAME/$CONTAINER_IMAGE:$TRAVIS_COMMIT && docker push $USERNAME/$CONTAINER_IMAGE:latest
   on:
     branch: master
