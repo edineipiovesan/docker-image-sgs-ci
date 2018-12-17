@@ -1,15 +1,29 @@
 sudo: required
 services:
   - docker
+env:
+  global:
+    - CONTAINER_IMAGE=sgs-ci-build-image
+
+before_script:
+  - export BUILD_DATE=${date -u}
+  - docker pull $CONTAINER_IMAGE || true
 
 script:
-  - docker build -t edineipiovesan/sgs-ci-build-image .
+  - docker build --cache-from $CONTAINER_IMAGE:latest --tag $USERNAME/$CONTAINER_IMAGE .
+
+after_script:
+  - docker images
 
 before_deploy:
   - docker login -u $USERNAME -p $PASSWORD
+  - docker tag $CONTAINER_IMAGE $CONTAINER_IMAGE:$TRAVIS_COMMIT
+  - docker tag $CONTAINER_IMAGE $CONTAINER_IMAGE:latest
 
 deploy:
   provider: script
-  script: docker push edineipiovesan/sgs-ci-build-image:$TRAVIS_COMMIT
+  script: 
+    - docker push $USERNAME/$CONTAINER_IMAGE:$TRAVIS_COMMIT
+    - docker push $USERNAME/$CONTAINER_IMAGE:latest
   on:
     branch: master
