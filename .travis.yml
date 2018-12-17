@@ -6,7 +6,7 @@ env:
     - CONTAINER_IMAGE=sgs-ci-build-image
 
 before_script:
-  - export BUILD_DATE=${date -u}
+  - export BUILD_DATE=$(date '+%d/%m/%Y %T UTC' -u)
   - docker pull $CONTAINER_IMAGE || true
 
 script:
