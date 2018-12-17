@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/edineipiovesan/docker-image-sgs-ci.svg?branch=master)](https://travis-ci.org/edineipiovesan/docker-image-sgs-ci)
+[![Build Status](https://travis-ci.org/edineipiovesan/docker-image-sgs-ci.svg?branch=master)](https://travis-ci.org/edineipiovesan/docker-image-sgs-ci) [![](https://images.microbadger.com/badges/image/edineipiovesan/sgs-ci-build-image.svg)](https://microbadger.com/images/edineipiovesan/sgs-ci-build-image "Get your own image badge on microbadger.com") [![](https://images.microbadger.com/badges/version/edineipiovesan/sgs-ci-build-image.svg)](https://microbadger.com/images/edineipiovesan/sgs-ci-build-image "Get your own version badge on microbadger.com") [![](https://images.microbadger.com/badges/commit/edineipiovesan/sgs-ci-build-image.svg)](https://microbadger.com/images/edineipiovesan/sgs-ci-build-image "Get your own commit badge on microbadger.com")
 
 # Docker image for SGS applications build CI process
 Docker image used by SGS CI process.
