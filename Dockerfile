@@ -1,5 +1,8 @@
 FROM alpine:latest
 
+ARG BUILD_DATE=unknown
+ARG TRAVIS_COMMIT=unknown
+
 LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.name="SGS Docker image for build in CI process" \
           org.label-schema.description="Docker image used by SGS CI process" \
