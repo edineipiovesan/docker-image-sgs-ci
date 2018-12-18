@@ -1,5 +1,10 @@
 FROM alpine:latest
 
+RUN apk update && \
+    apk update && \
+    apk add git nodejs npm && \
+    npm install -g grunt bower
+
 ARG BUILD_DATE=unknown
 ARG TRAVIS_COMMIT=unknown
 
@@ -12,8 +17,3 @@ LABEL org.label-schema.build-date=$BUILD_DATE \
           org.label-schema.vendor="Edinei" \
           org.label-schema.version=$TRAVIS_COMMIT \
           org.label-schema.schema-version="1.0"
-
-RUN apk update && \
-    apk update && \
-    apk add git nodejs npm && \
-    npm install -g grunt bower
